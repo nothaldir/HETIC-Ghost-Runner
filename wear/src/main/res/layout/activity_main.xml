@@ -15,12 +15,14 @@
         android:padding="@dimen/inner_frame_layout_padding"
         app:boxedEdges="all">
 
-        <TextView
-            android:id="@+id/text"
-            android:textColor="@color/black"
+        <Button
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hello_world" />
+            android:backgroundTint="@color/colorPrimary"
+            android:text="BEGIN"
+            android:textColor="@color/white" />
 
     </FrameLayout>
+
 </android.support.wear.widget.BoxInsetLayout>
