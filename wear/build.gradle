@@ -27,6 +27,7 @@ dependencies {
     implementation 'com.android.support:wear:26.1.0'
     implementation 'com.google.firebase:firebase-auth:16.0.1'
     compileOnly 'com.google.android.wearable:wearable:2.3.0'
+    implementation 'com.android.support:design:26.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
