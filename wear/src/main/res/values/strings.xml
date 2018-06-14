@@ -4,9 +4,9 @@
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
-    <string name="welcome">
-        Bienvenue sur Wavy!
-        Pour commencer, effectuez un test run.
+    <string name="welcomefr">
+        Bienvenue sur Wavy !
+        Pour commencer à utiliser l\'application, vous devez réalisez une course d\'essai.
     </string>
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_test_run">TestRunActivity</string>

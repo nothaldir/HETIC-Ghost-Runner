@@ -7,9 +7,12 @@ import android.app.FragmentTransaction;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
+import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.wearable.activity.WearableActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,9 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
 
-public class TestRunActivity extends Activity {
+public class TestRunActivity extends WearableActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -38,36 +42,15 @@ public class TestRunActivity extends Activity {
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
+//        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
+//        tabLayout.setupWithViewPager(mViewPager, true);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_test_run, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener{
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -108,11 +91,19 @@ public class TestRunActivity extends Activity {
                     break;
                 case 3:
                     rootView = inflater.inflate(R.layout.fragment_test_run_four, container, false);
+                    Button button = (Button) rootView.findViewById(R.id.button2);
+                    button.setOnClickListener(this);
                     break;
             }
-//            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-//            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == R.id.button2) {
+                Intent intent = new Intent(getActivity(), RunActivity.class);
+                startActivity(intent);
+            }
         }
     }
 

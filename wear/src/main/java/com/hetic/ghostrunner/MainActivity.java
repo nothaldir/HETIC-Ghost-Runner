@@ -19,18 +19,12 @@ import android.widget.TextView;
 public class MainActivity extends WearableActivity implements View.OnClickListener {
 
     Button button;
-    private SensorManager mSensorManager;
-    private Sensor mSensor;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.button).setOnClickListener(this);
-
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
 
         // Enables Always-on
         setAmbientEnabled();
@@ -52,31 +46,4 @@ public class MainActivity extends WearableActivity implements View.OnClickListen
         }
     }
 
-    protected void onResume() {
-        super.onResume();
-        mSensorManager.registerListener(mSensorEventListener, mSensor,
-                SensorManager.SENSOR_DELAY_NORMAL);
-    }
-
-    protected void onPause() {
-        super.onPause();
-        mSensorManager.unregisterListener(mSensorEventListener);
-    }
-
-    private SensorEventListener mSensorEventListener = new SensorEventListener() {
-        private int mStep;
-
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-        }
-
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            if (event.values[0] == 1.0f) {
-                mStep++;
-            }
-            Log.d("STEP", String.valueOf(mStep));
-        }
-    };
 }
