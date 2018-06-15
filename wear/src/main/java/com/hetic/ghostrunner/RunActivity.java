@@ -5,7 +5,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Handler;
+import android.os.Vibrator;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.util.Log;
@@ -17,6 +18,20 @@ public class RunActivity extends WearableActivity {
     private SensorManager mSensorManager;
     private Sensor mSensor;
     private TextView mTextView;
+    private TextView mTextRun;
+
+    Handler h = new Handler();
+    int delay = 10 * 1000;
+    Runnable runnable;
+
+    private int mStep;
+
+    Integer firstStep = 0;
+    Integer lastStep;
+    Integer rythm = 180 / 60 * 10;
+
+    Vibrator vibrator;
+    final int indexInPatternToRepeat = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,23 +41,54 @@ public class RunActivity extends WearableActivity {
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
-        mTextView = (TextView) findViewById(R.id.textSteps);
-    }
 
+        mTextView = (TextView) findViewById(R.id.textSteps);
+        mTextRun = (TextView) findViewById(R.id.textRun);
+
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+    }
 
     protected void onResume() {
         super.onResume();
+
         mSensorManager.registerListener(mSensorEventListener, mSensor,
                 SensorManager.SENSOR_DELAY_NORMAL);
+
+        h.postDelayed( runnable = new Runnable() {
+            public void run() {
+                Log.d("DELAY", "tick");
+                lastStep = mStep;
+                Integer median = lastStep - firstStep;
+                if ( rythm - 5 > median ) {
+                    Log.d("RYTHM", "accelerate");
+                    long[] vibrationPattern = {0, 150, 100, 150, 100, 150};
+                    vibrator.vibrate(vibrationPattern, indexInPatternToRepeat);
+                    mTextRun.setText("accélérez");
+                } else if ( rythm + 5 < median ) {
+                    Log.d("RYTHM", "slow down");
+                    long[] vibrationPattern = {0, 600};
+                    vibrator.vibrate(vibrationPattern, indexInPatternToRepeat);
+                    mTextRun.setText("ralentissez");
+                } else {
+                    Log.d("RYTHM", "continue");
+                    long[] vibrationPattern = {0, 250, 200, 250};
+                    vibrator.vibrate(vibrationPattern, indexInPatternToRepeat);
+                    mTextRun.setText("continuez");
+                }
+                firstStep = mStep;
+
+                h.postDelayed(runnable, delay);
+            }
+        }, delay);
     }
 
     protected void onPause() {
         super.onPause();
+        h.removeCallbacks(runnable); //stop handler when activity not visible
         mSensorManager.unregisterListener(mSensorEventListener);
     }
 
     private SensorEventListener mSensorEventListener = new SensorEventListener() {
-        private int mStep;
 
         @Override
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -55,7 +101,8 @@ public class RunActivity extends WearableActivity {
                 mStep++;
             }
             Log.d("STEP", String.valueOf(mStep));
-            mTextView.setText(Integer.toString(mStep));
+            String string = "Foulées : " + Integer.toString((mStep));
+            mTextView.setText(string);
         }
     };
 }
