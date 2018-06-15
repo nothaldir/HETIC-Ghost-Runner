@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Ghost Runner</string>
+    <string name="app_name">Wavy</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="menu_one">Dashboard</string>
-    <string name="menu_two">Run</string>
-    <string name="menu_three">Profile</string>
+    <string name="menu_one">Tableau de bord</string>
+    <string name="menu_two">Course</string>
+    <string name="menu_three">Profil</string>
 </resources>

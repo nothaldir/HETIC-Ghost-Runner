@@ -28,7 +28,7 @@ public class RunActivity extends WearableActivity {
 
     Integer firstStep = 0;
     Integer lastStep;
-    Integer rythm = 180 / 60 * 10;
+    Integer rythm = 160 / 60 * 10;
 
     Vibrator vibrator;
     final int indexInPatternToRepeat = -1;

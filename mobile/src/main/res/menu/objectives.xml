@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/objective_distance"
+        android:title="Distance" />
+
+    <item
+        android:id="@+id/objective_time"
+        android:title="Temps" />
+
+    <item
+        android:id="@+id/objective_rythm"
+        android:title="Rythme" />
+
+</menu>

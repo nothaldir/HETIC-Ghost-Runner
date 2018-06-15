@@ -14,7 +14,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Nous allons calculer votre niveau grâce à une course de 180 foulées par minute."
+        android:text="Nous allons calculer votre niveau grâce à une course de 160 foulées par minute."
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
