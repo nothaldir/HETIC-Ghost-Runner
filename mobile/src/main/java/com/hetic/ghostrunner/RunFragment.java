@@ -9,17 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class RunFragment extends Fragment implements View.OnClickListener {
-    Integer distance;
-    Integer time;
-    Integer height;
     TextView stringResult;
     Integer result;
-
-//    private SectionsPageAdapter mSectionsPageAdapater;
-//    private ViewPager mViewPager;
+    EditText objetive;
 
     @Nullable
     @Override
@@ -29,36 +25,20 @@ public class RunFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-//        getView().findViewById(R.id.buttonSubmitRun).setOnClickListener(this);
+        getView().findViewById(R.id.buttonSubmitRun).setOnClickListener(this);
 
-//        stringResult = getView().findViewById(R.id.result);
-
-//        mSectionsPageAdapater = new SectionsPageAdapter(getFragmentManager());
-
-//        mViewPager = (ViewPager) getView().findViewById(R.id.container);
-//        setupViewPager(mViewPager);
-
-//        TabLayout tabLayout = (TabLayout) getView().findViewById(R.id.tabs);
-//        tabLayout.setupWithViewPager(mViewPager);
-    }
+        stringResult = getView().findViewById(R.id.result);
+        objetive = getView().findViewById(R.id.editTextObjective);
+}
 
     @Override
     public void onClick(View view) {
-//        if (view.getId() == R.id.buttonSubmitRun) {
-//            distance = Integer.parseInt(getView().findViewById(R.id.editTextDistance).toString());
-//            time = Integer.parseInt(getView().findViewById(R.id.editTextTime).toString());
-//            height = Integer.parseInt(getView().findViewById(R.id.editTextHeight).toString());
-//            result = distance * time * height;
-//            stringResult.setText(result);
-//            Log.d("RUN", String.valueOf(result));
-//        }
+        if (view.getId() == R.id.buttonSubmitRun) {
+            if (objetive.length() > 1) {
+                result = 169;
+                stringResult.setText(Integer.toString(result));
+                Log.d("RUN", String.valueOf(result));
+            }
+        }
     }
-
-//    private void setupViewPager(ViewPager viewPager) {
-//        SectionsPageAdapter adapter = new SectionsPageAdapter(getFragmentManager());
-//        adapter.addFragment(new DistanceFragment(), "Distance");
-//        adapter.addFragment(new TimeFragment(), "Temps");
-//        adapter.addFragment(new RythmFragment(), "Rythme");
-//        viewPager.setAdapter(adapter);
-//    }
 }

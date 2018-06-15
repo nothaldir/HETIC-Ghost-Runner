@@ -62,6 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginTop="8dp"
                 android:text="Temps (minute)" />
 
             <RadioButton
@@ -69,12 +70,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginTop="8dp"
                 android:text="Rythme (foulée par minute)" />
 
         </RadioGroup>
 
         <EditText
-            android:id="@+id/editTextDistance"
+            android:id="@+id/editTextObjective"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
@@ -87,36 +89,6 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-        <!--<EditText-->
-            <!--android:id="@+id/editTextTime"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginEnd="24dp"-->
-            <!--android:layout_marginStart="24dp"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:ems="10"-->
-            <!--android:inputType="number"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/editTextDistance"-->
-            <!--android:hint="Temps (minute)"-->
-            <!--android:shadowColor="@color/colorPrimary"/>-->
-
-        <!--<EditText-->
-            <!--android:id="@+id/editTextHeight"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginEnd="24dp"-->
-            <!--android:layout_marginStart="24dp"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:ems="10"-->
-            <!--android:inputType="number"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintHorizontal_bias="0.0"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/editTextTime"-->
-            <!--android:hint="Rythme (foulée par minute)"/>-->
 
         <android.support.v7.widget.AppCompatImageView
             android:layout_width="match_parent"
@@ -158,7 +130,7 @@
             app:layout_constraintBottom_toTopOf="@+id/buttonSubmitRun"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDistance"
+            app:layout_constraintTop_toBottomOf="@+id/editTextObjective"
             app:layout_constraintVertical_bias="0.375" />
 
         <android.support.v7.widget.AppCompatTextView
